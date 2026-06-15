@@ -1,0 +1,258 @@
+/* ===================================================
+   DISTRIBUCIÓN DE PANTALLA DIVIDIDA (SPLIT SCREEN)
+   =================================================== */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+/* ===================================================
+   LADO IZQUIERDO: PANEL DE INFORMACIÓN PREMIUM
+   =================================================== */
+.login-info {
+  flex: 1.2;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Decoración geométrica sutil de fondo (CORREGIDO BLUR) */
+.login-info::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: rgba(56, 189, 248, 0.07);
+  border-radius: 50%;
+  filter: blur(80px); /* Arreglado aquí */
+  pointer-events: none;
+}
+
+.login-info h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-info p {
+  font-size: 1.3rem;
+  color: #38bdf8;
+  font-weight: 500;
+  margin-bottom: 48px;
+}
+
+/* Lista de beneficios académicos */
+.login-info ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 450px;
+}
+
+.login-info li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  
+  /* CORREGIDO BACKDROP FILTER CON PREFIJOS */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  
+  transition: transform 0.2s ease;
+}
+
+.login-info li:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(56, 189, 248, 0.2);
+}
+
+/* ===================================================
+   LADO DERECHO: CONTENEDOR DEL FORMULARIO
+   =================================================== */
+.login-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.login-card > p {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 36px;
+}
+
+/* INPUTS ESTILIZADOS */
+.login-card input[type="text"],
+.password-box input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #0f172a;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.login-card input[type="text"]:focus,
+.password-box input:focus {
+  outline: none;
+  border-color: #0284c7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+.login-card input[type="text"] {
+  margin-bottom: 18px;
+}
+
+/* CONTENEDOR DE CONTRASEÑA CON ICONO */
+.password-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.password-box span {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  
+  /* CORREGIDO USER-SELECT CON PREFIJOS */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  transition: transform 0.1s ease;
+}
+
+.password-box span:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+/* BOTÓN ACCIÓN DE LOGIN */
+.login-card button {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  transition: all 0.2s ease;
+}
+
+.login-card button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+}
+
+.login-card button:active {
+  transform: translateY(1px);
+}
+
+/* TEXTO DE CREDENCIALES DEMO */
+.login-card .demo {
+  margin-top: 28px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-align: center;
+  background-color: #f1f5f9;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e1;
+}
+
+.login-card .demo b {
+  color: #475569;
+  font-weight: 600;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN
+   =================================================== */
+@media (max-width: 900px) {
+  .login-info {
+    display: none;
+  }
+  
+  .login-container {
+    flex: 1;
+    background-color: #f8fafc;
+  }
+  
+  .login-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+    border: 1px solid #e2e8f0;
+  }
+}
+/* Corrección de colapso de texto para el encabezado del Login */
+.login-info h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 4px; /* Espacio controlado inferior */
+  line-height: 1.1;   /* Evita que el alto de línea choque */
+  color: #ffffff;
+}
+
+.login-info p {
+  font-size: 1.3rem;
+  color: #38bdf8;
+  font-weight: 500;
+  margin-top: 0;      /* Resetea márgenes basura */
+  margin-bottom: 40px; /* Separa el subtítulo de la lista de abajo */
+  line-height: 1.4;
+}
